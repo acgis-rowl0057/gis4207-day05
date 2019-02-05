@@ -9,6 +9,8 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
+
 import arcpy
 import os
 import sys
@@ -17,20 +19,16 @@ scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
 fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
-
-rows = arcpy.SearchCursor(fc,"","", "NAME; PROV", "PROV D")
+fields = ['NAME', 'PROV']
 count = 0
-currentState = ""
-print "Name, Prov"
-for row in rows:
-    if currentState != row.PROV:
-        currentState = row.PROV
+# Use ORDER BY sql clause to sort field values
+for row in arcpy.da.SearchCursor(
+    fc, fields):
     count += 1
-    print u"{},{}".format(row.NAME, row.PROV)
+    print(u'{0}, {1}'.format(row[0], row[1]))
 
 
 print "There are {} cities in the above list".format(count)
 
-del rows
-del row
 
+del row
