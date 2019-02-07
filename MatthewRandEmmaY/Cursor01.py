@@ -12,12 +12,13 @@
 import arcpy
 import os
 import sys
+import timeit
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
 fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
-
+start=timeit.default_timer()
 rows = arcpy.SearchCursor(fc,"","", "NAME; PROV", "PROV D")
 count = 0
 currentState = ""
@@ -27,10 +28,11 @@ for row in rows:
         currentState = row.PROV
     count += 1
     print u"{},{}".format(row.NAME, row.PROV)
-
+stop=timeit.default_timer()
+seconds=stop-start
 
 print "There are {} cities in the above list".format(count)
-
+print "Seconds to execute:",seconds
 del rows
 del row
 

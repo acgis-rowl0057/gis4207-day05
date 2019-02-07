@@ -14,10 +14,11 @@
 import arcpy
 import os
 import sys
+import timeit
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
-
+start=timeit.default_timer()
 fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
 fields = ['NAME', 'PROV']
 count = 0
@@ -29,6 +30,7 @@ for row in arcpy.da.SearchCursor(
 
 
 print "There are {} cities in the above list".format(count)
-
-
+stop=timeit.default_timer()
+seconds=stop-start
+print "Seconds to execute:",seconds
 del row
