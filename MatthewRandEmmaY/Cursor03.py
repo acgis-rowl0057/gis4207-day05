@@ -30,7 +30,8 @@ scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
 start=timeit.default_timer()
-rows = arcpy.SearchCursor(fc,"","", "NAME; PROV", "PROV D")
+
+rows = arcpy.SearchCursor(fc,""""PROV"='AB'""","","NAME; PROV")
 count = 0
 currentState = ""
 print "Name, Prov"
@@ -46,4 +47,5 @@ print "There are {} cities in the above list".format(count)
 print "Seconds to execute:",seconds
 del rows
 del row
+
 
