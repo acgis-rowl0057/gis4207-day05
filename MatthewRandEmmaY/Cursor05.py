@@ -41,6 +41,6 @@ def getBody():
     print "     </Point>"
     print " </Placemark>"
     print"</kml>"
-
+print "\n"
 getHeader()
 getBody()
