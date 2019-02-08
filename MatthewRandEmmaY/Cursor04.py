@@ -35,7 +35,7 @@ count = 0
 print "Name, Province, Longitude, Latitude"
 # Use ORDER BY sql clause to sort field values
 for row in arcpy.da.SearchCursor(
-    fc, fields,""""PROV"='AB'"""):
+    fc, fields):
     count += 1
     print(u'{0}, {1}, {2}, {3}'.format(row[0], row[1], row[2], row[3]))
 
