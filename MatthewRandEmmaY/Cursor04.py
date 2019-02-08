@@ -29,11 +29,10 @@ os.chdir(scriptFolder)
 
 start=timeit.default_timer()
 
-
+## where clause   """"PROV"='QC'"""
 fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y']
 count = 0
 print "Name, Province, Longitude, Latitude"
-# Use ORDER BY sql clause to sort field values
 for row in arcpy.da.SearchCursor(
     fc, fields):
     count += 1
