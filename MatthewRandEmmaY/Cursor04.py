@@ -32,6 +32,8 @@ start=timeit.default_timer()
 ## where clause   """"PROV"='QC'"""
 fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y']
 count = 0
+dscCS = arcpy.Describe(fc).spatialReference
+print("Coordinate System:      " + dscCS.Name)
 print "Name, Province, Longitude, Latitude"
 for row in arcpy.da.SearchCursor(
     fc, fields):
@@ -44,4 +46,6 @@ seconds=stop-start
 print "Seconds to execute:",seconds
 
 del row
+
+
 
