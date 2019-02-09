@@ -48,13 +48,13 @@ def getBody(row):
     return kml
 
 
-#write to kml file
-##savePath = output
-##fileName = "Cities"
-##completName = os.path.join(savePath,fileName+".kml")
-##file1 = open(completName,"w")
-##file1.write(kml)
-##file1.close()
+    ##write to file
+savePath = output
+fileName = "Cities"
+completName = os.path.join(savePath,fileName + ".kml")
+file1 = open(completName,"w")
+file1.write("{} {}".format(getHeader,getBody))
+file1.close()
 
 if __name__ == "__main__":
     main()
