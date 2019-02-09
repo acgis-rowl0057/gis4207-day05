@@ -23,8 +23,8 @@ fc = sys.argv[1]
 import arcpy
 
 if not os.path.exists(fc):
-            print fc, "does not exist."
-            sys.exit()
+    print fc, "does not exist."
+    sys.exit()
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)

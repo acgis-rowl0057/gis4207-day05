@@ -21,8 +21,8 @@ fc = sys.argv[1]
 import arcpy
 
 if not os.path.exists(fc):
-            print fc, "does not exist."
-            sys.exit()
+    print fc, "does not exist."
+    sys.exit()
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
@@ -34,13 +34,12 @@ fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y']
 count = 0
 dscCS = arcpy.Describe(fc).spatialReference
 print("Coordinate System:      " + dscCS.Name)
-print "Name, Province, Longitude, Latitude"
+print  "Name, Province, Longitude, Latitude"
 for row in arcpy.da.SearchCursor(
     fc, fields):
     count += 1
     print(u'{0}, {1}, {2}, {3}'.format(row[0], row[1], row[2], row[3]))
 print "There are {} cities in the above list".format(count)
-
 stop=timeit.default_timer()
 seconds=stop-start
 print "Seconds to execute:",seconds
