@@ -4,7 +4,7 @@
 #
 # Author:      rowla
 #
-# Created:     07-02-2019
+# Created:     09-02-2019
 # Copyright:   (c) rowla 2019
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
@@ -13,6 +13,7 @@ import arcpy
 import os
 import sys
 import os.path
+import zipfile
 
 #create ouput folder
 output = r"D:\Semester2\gis4207_Customization_I\day05\Output"
@@ -62,6 +63,13 @@ def getBody(row):
 def getFooter():
     footer= """</Document> </kml>"""
     return footer
+
+
+# zip Cities.kml to Cities.kmz
+fileLocation = r"D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kmz"
+kmlZip = zipfile.ZipFile(fileLocation, 'w')
+kmlZip.write('D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kml')
+kmlZip.close()
 
 if __name__ == "__main__":
     main()
