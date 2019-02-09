@@ -23,15 +23,16 @@ output = r"D:\Semester2\gis4207_Customization_I\day05\Output"
 ##    print (" ")
 ##    print "**OUTPUT FOLDER ALREADY EXISTS**"
 
-##def main():
-fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
-fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y','UTM_MAP']
-print  "Name, Province, Longitude, Latitude, UTM"
-getHeader()
-for row in arcpy.da.SearchCursor(fc, fields):
-    print getBody(row)
-        #print(u'{0}, {1}, {2}, {3}, {4}'.format(row[0], row[1], row[2], row[3], row[4]))
-
+def main():
+    fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
+    fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y','UTM_MAP']
+    print  "Name, Province, Longitude, Latitude, UTM"
+    getHeader()
+    for row in arcpy.da.SearchCursor(fc, fields):
+        print getBody(row)
+            #print(u'{0}, {1}, {2}, {3}, {4}'.format(row[0], row[1], row[2], row[3], row[4]))
+    print "<Document>"
+    print "<KML>"
 
 
 def getHeader():
@@ -48,7 +49,7 @@ def getBody(row):
     kml += u"         <coordinates>{},{}</coordinates>".format(row[2],row[3])
     kml += "     </Point>"
     kml += " </Placemark>"
-    kml +="</kml>"
+##    kml +="</kml>"
     return kml
 
 
@@ -60,5 +61,5 @@ def getBody(row):
 ##file1.write(kml)
 ##file1.close()
 
-##if __name__ == "__main__":
-##    main()
+if __name__ == "__main__":
+    main()
