@@ -12,10 +12,19 @@
 import arcpy
 import os
 import sys
+import os.path
+
+output = r"D:\Semester2\gis4207_Customization_I\day05\Output"
+if not os.path.exists(output):
+    os.makedirs(output)
+    print (" ")
+    print "**OUTPUT FOLDER CREATED**"
+else:
+    print (" ")
+    print "**OUTPUT FOLDER ALREADY EXISTS**"
 
 def main():
     fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
-
     fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y','UTM_MAP']
     count = 0
     dscCS = arcpy.Describe(fc).spatialReference
@@ -44,6 +53,15 @@ def getBody(row):
     kml += " </Placemark>"
     kml +="</kml>"
     return kml
+#write to kml file
+##savePath = output
+##fileName = "Cities"
+##completName = os.path.join(savePath,fileName+".kml")
+##file1 = open(completName,"w")
+##tofile = getHeader
+##toFiletwo = getBody
+##file1.write(tofile)
+##file1.close()
 
 if __name__ == "__main__":
     main()
