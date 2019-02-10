@@ -44,7 +44,7 @@ def main():
     file1.close()
 
 def getHeader():
-    header= """<?xml version="1.0" encoding="UTF-8"?>
+    header = """<?xml version="1.0" encoding="UTF-8"?>
     <kml xmlns="http://www.opengis.net/kml/2.2">
     <Document>"""
     return header
@@ -61,13 +61,13 @@ def getBody(row):
     return kml.format(row[0].encode('utf-8'),row[1],row[4],row[2],row[3])
 
 def getFooter():
-    footer= """</Document> </kml>"""
+    footer = """</Document> </kml>"""
     return footer
 
 
 # zip Cities.kml to Cities.kmz
 fileLocation = r"D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kmz"
-kmlZip = zipfile.ZipFile(fileLocation, 'w')
+kmlZip = zipfile.ZipFile(fileLocation, 'w', zipfile.ZIP_DEFLATED)
 kmlZip.write('D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kml')
 kmlZip.close()
 
