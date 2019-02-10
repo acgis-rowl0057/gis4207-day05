@@ -1,12 +1,11 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
+# Name:        Cursor05.py
 # Purpose:
 #
-# Author:      rowla
+# Author:      Matthew Rowland
 #
-# Created:     07-02-2019
-# Copyright:   (c) rowla 2019
-# Licence:     <your licence>
+# Created:     05-02-2019
+# Copyright:   (c) Rowland 2019
 #-------------------------------------------------------------------------------
 
 import arcpy
