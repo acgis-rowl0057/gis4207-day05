@@ -38,7 +38,7 @@ for row in rows:
     if currentState != row.PROV:
         currentState = row.PROV
     count += 1
-    print u"{},{}".format(row.NAME, row.PROV)
+    print u"{},{}".format(row.NAME, row.PROV.upper())
 stop=timeit.default_timer()
 seconds=stop-start
 
