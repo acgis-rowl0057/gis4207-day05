@@ -67,7 +67,7 @@ def getFooter():
     return footer
 
 
-# zip Cities.kml to Cities.kmz
+# compression Cities.kml to Cities.kmz using the Zipfile module
 fileLocation = r"D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kmz"
 kmlZip = zipfile.ZipFile(fileLocation, 'w', zipfile.ZIP_DEFLATED)
 kmlZip.write('D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kml')
