@@ -13,6 +13,9 @@ import os
 import sys
 import os.path
 
+scriptFolder = os.path.dirname(os.path.abspath(__file__))
+os.chdir(scriptFolder)
+
 #create ouput folder
 output = r"D:\Semester2\gis4207_Customization_I\day05\Output"
 if not os.path.exists(output):

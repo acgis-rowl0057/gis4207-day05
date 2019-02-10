@@ -15,6 +15,7 @@ import timeit
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
+
 start=timeit.default_timer()
 fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
 fields = ['NAME', 'PROV']
