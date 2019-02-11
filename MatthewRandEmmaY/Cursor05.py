@@ -13,6 +13,12 @@ import os
 import sys
 import os.path
 
+if len(sys.argv) != 3:
+    print "Usage: Cursor03.py <FeatureClass>"
+    sys.exit()
+
+fc = sys.argv[1]
+
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
@@ -23,7 +29,6 @@ if not os.path.exists(output):
 
 
 def main():
-    fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
     fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y','UTM_MAP']
 
     #create kml file, open and write header

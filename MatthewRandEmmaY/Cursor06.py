@@ -14,6 +14,13 @@ import sys
 import os.path
 import zipfile
 
+if len(sys.argv) != 3:
+    print "Usage: Cursor03.py <FeatureClass>"
+    sys.exit()
+
+fc = sys.argv[1]
+fz = sys.argv[2]
+
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
@@ -24,7 +31,6 @@ if not os.path.exists(output):
 
 
 def main():
-    fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
     fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y','UTM_MAP']
 
     #create kml file, open and write header
@@ -68,13 +74,11 @@ def getFooter():
 
 
 # compression Cities.kml to Cities.kmz using the Zipfile module
-
-fileLocation = r"D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kmz"
-kmlZip = zipfile.ZipFile(fileLocation, 'w', zipfile.ZIP_DEFLATED)
-kmlZip.write('D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kml')
-kmlZip.close()
-
-
+def zipIt():
+    kmlZip = zipfile.ZipFile(fz, 'w', zipfile.ZIP_DEFLATED)
+    kmlZip.write('D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kml')
+    kmlZip.close()
+zipIt()
 
 if __name__ == "__main__":
     main()
