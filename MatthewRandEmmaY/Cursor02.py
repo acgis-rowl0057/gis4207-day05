@@ -31,7 +31,7 @@ def getDaCityProv():
     print "There are {} cities in the above list".format(count)
     del row
 
-getCityProv()
+getDaCityProv()
 
 stop=timeit.default_timer()
 seconds=stop-start

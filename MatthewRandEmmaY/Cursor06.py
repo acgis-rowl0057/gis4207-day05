@@ -68,10 +68,13 @@ def getFooter():
 
 
 # compression Cities.kml to Cities.kmz using the Zipfile module
+
 fileLocation = r"D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kmz"
 kmlZip = zipfile.ZipFile(fileLocation, 'w', zipfile.ZIP_DEFLATED)
 kmlZip.write('D:\Semester2\gis4207_Customization_I\day05\Output\Cities.kml')
 kmlZip.close()
+
+
 
 if __name__ == "__main__":
     main()
