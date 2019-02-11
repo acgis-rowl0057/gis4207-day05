@@ -33,7 +33,7 @@ def getCityProvince():
     del rows
     del row
 
-cityProvince()
+getCityProvince()
 
 stop=timeit.default_timer()
 seconds=stop-start
