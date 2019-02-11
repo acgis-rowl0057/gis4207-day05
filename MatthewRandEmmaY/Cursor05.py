@@ -14,7 +14,7 @@ import sys
 import os.path
 
 if len(sys.argv) != 3:
-    print "Usage: Cursor03.py <FeatureClass>"
+    print "Usage: Cursor05.py <FeatureClass>"
     sys.exit()
 
 fc = sys.argv[1]

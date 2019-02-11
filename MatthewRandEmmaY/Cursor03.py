@@ -15,10 +15,11 @@ import timeit
 import arcpy
 
 
-fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
+if len(sys.argv) != 3:
+    print "Usage: Cursor03.py <FeatureClass>"
+    sys.exit()
 
-
-
+fc = sys.argv[1]
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)

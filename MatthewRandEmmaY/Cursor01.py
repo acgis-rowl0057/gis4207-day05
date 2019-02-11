@@ -13,11 +13,17 @@ import os
 import sys
 import timeit
 
+if len(sys.argv) != 3:
+    print "Usage: Cursor01.py <FeatureClass>"
+    sys.exit()
+
+fc = sys.argv[1]
+
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
 start=timeit.default_timer()
-fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
+
 
 def getCityProvince():
     rows = arcpy.SearchCursor(fc,"","", "NAME; PROV", "PROV D")
