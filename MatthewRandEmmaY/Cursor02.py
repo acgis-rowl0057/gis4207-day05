@@ -18,17 +18,21 @@ os.chdir(scriptFolder)
 
 start=timeit.default_timer()
 fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
-fields = ['NAME', 'PROV']
-count = 0
-# Use ORDER BY sql clause to sort field values
-for row in arcpy.da.SearchCursor(
-    fc, fields):
-    count += 1
-    print(u'{0}, {1}'.format(row[0], row[1]))
+def getCityProv ():
+    print "City, Prov"
+    fields = ['NAME', 'PROV']
+    count = 0
+    # Use ORDER BY sql clause to sort field values
+    for row in arcpy.da.SearchCursor(
+        fc, fields):
+        count += 1
+        print(u'{0}, {1}'.format(row[0], row[1]))
+    print "There are {} cities in the above list".format(count)
+    del row
 
+getCityProv()
 
-print "There are {} cities in the above list".format(count)
 stop=timeit.default_timer()
 seconds=stop-start
 print "Seconds to execute:",seconds
-del row
+

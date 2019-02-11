@@ -30,21 +30,25 @@ os.chdir(scriptFolder)
 
 start=timeit.default_timer()
 
-rows = arcpy.SearchCursor(fc,""""PROV"='AB'""","","NAME; PROV")
-count = 0
-currentState = ""
-print "Name, Prov"
-for row in rows:
-    if currentState != row.PROV:
-        currentState = row.PROV
-    count += 1
-    print u"{},{}".format(row.NAME, row.PROV.upper())
+def getCityAlberta():
+    rows = arcpy.SearchCursor(fc,""""PROV"='AB'""","","NAME; PROV")
+    count = 0
+    currentState = ""
+    print "Name, Prov"
+    for row in rows:
+        if currentState != row.PROV:
+            currentState = row.PROV
+        count += 1
+        print u"{},{}".format(row.NAME, row.PROV.upper())
+    print "There are {} cities in the above list".format(count)
+    del rows
+    del row
+
+getCityAlberta()
+
 stop=timeit.default_timer()
 seconds=stop-start
-
-print "There are {} cities in the above list".format(count)
 print "Seconds to execute:",seconds
-del rows
-del row
+
 
 

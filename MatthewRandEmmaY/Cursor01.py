@@ -18,20 +18,25 @@ os.chdir(scriptFolder)
 
 fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
 start=timeit.default_timer()
-rows = arcpy.SearchCursor(fc,"","", "NAME; PROV", "PROV D")
-count = 0
-currentState = ""
-print "Name, Prov"
-for row in rows:
-    if currentState != row.PROV:
-        currentState = row.PROV
-    count += 1
-    print u"{},{}".format(row.NAME, row.PROV)
+
+def cityProvince():
+    rows = arcpy.SearchCursor(fc,"","", "NAME; PROV", "PROV D")
+    count = 0
+    currentState = ""
+    print "Name, Prov"
+    for row in rows:
+        if currentState != row.PROV:
+            currentState = row.PROV
+        count += 1
+        print u"{},{}".format(row.NAME, row.PROV)
+    print "There are {} cities in the above list".format(count)
+    del rows
+    del row
+
+cityProvince()
+
 stop=timeit.default_timer()
 seconds=stop-start
-
-print "There are {} cities in the above list".format(count)
 print "Seconds to execute:",seconds
-del rows
-del row
+
 
