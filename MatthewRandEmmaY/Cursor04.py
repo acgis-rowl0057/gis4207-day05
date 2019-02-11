@@ -10,18 +10,14 @@
 import os
 import sys
 import timeit
-
-if len(sys.argv) != 2:
-    print "Usage: Cursor03.py <FeatureClass>"
-    sys.exit()
-
-fc = sys.argv[1]
-
 import arcpy
 
-if not os.path.exists(fc):
-    print fc, "does not exist."
-    sys.exit()
+
+
+fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
+
+
+
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
