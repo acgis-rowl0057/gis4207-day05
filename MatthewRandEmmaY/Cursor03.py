@@ -12,30 +12,34 @@
 import os
 import sys
 import timeit
-import arcpy
 
-
-if len(sys.argv) != 3:
+if len(sys.argv) != 4:
     print "Usage: Cursor03.py <FeatureClass>"
     sys.exit()
-
+prov = sys.argv[3]
 fc = sys.argv[1]
+provList = ["NS","NF","PEI","ON","NB","QC","MB","SK","AB","BC","NT","YT","NU"]
+
+if prov.upper() not in provList:
+    sys.exit()
+import arcpy
+if not arcpy.Exists(fc):
+    sys.exit()
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
 start=timeit.default_timer()
+exp = """"PROV"LIKE '{}'""".format(prov.upper())
 
 def getAlberta():
-    rows = arcpy.SearchCursor(fc,""""PROV"='AB'""","","NAME; PROV")
+    fields = ["Name", "PROV"]
+    rows = arcpy.da.SearchCursor(fc,fields, exp)
     count = 0
-    currentState = ""
     print "Name, Prov"
     for row in rows:
-        if currentState != row.PROV:
-            currentState = row.PROV
-            count += 1
-        print u"{},{}".format(row.NAME, row.PROV.upper())
+        count += 1
+        print u"{},{}".format(row[0], row[1])
     print "There are {} cities in the above list".format(count)
     del rows
     del row

@@ -10,39 +10,42 @@
 import os
 import sys
 import timeit
-import arcpy
 
-
-if len(sys.argv) != 3:
-    print "Usage: Cursor04.py <FeatureClass>"
+if len(sys.argv) != 4:
+    print "Usage: Cursor03.py <FeatureClass>"
     sys.exit()
-
+prov = sys.argv[3]
 fc = sys.argv[1]
+provList = ["NS","NF","PEI","ON","NB","QC","MB","SK","AB","BC","NT","YT","NU"]
+
+if prov.upper() not in provList:
+    sys.exit()
+import arcpy
+if not arcpy.Exists(fc):
+    sys.exit()
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
 start=timeit.default_timer()
+exp = """"PROV"LIKE '{}'""".format(prov.upper())
 
-## where clause   """"PROV"='QC'"""
-def getLatLong():
-    fields = ['NAME', 'PROV', 'SHAPE@X', 'SHAPE@Y']
+def getAlberta():
+    fields = ["Name", "PROV", "SHAPE@X", "SHAPE@Y"]
+    rows = arcpy.da.SearchCursor(fc,fields, exp)
     count = 0
-    dscCS = arcpy.Describe(fc).spatialReference
-    print("Coordinate System:      " + dscCS.Name)
-    print  "Name, Province, Longitude, Latitude"
-    for row in arcpy.da.SearchCursor(
-        fc, fields):
+    print "Name, Prov"
+    for row in rows:
         count += 1
-        print(u'{0}, {1}, {2}, {3}'.format(row[0], row[1], row[2], row[3]))
+        print u"{},{},{},{}".format(row[0], row[1], row[2], row[3])
     print "There are {} cities in the above list".format(count)
+    del rows
     del row
+getAlberta()
 
-getLatLong()
 
 stop=timeit.default_timer()
 seconds=stop-start
-
 print "Seconds to execute:",seconds
 
 

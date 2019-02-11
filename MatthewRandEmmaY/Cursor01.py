@@ -8,16 +8,20 @@
 # Copyright:   (c) Rowland 2019
 #-------------------------------------------------------------------------------
 
-import arcpy
+
 import os
 import sys
 import timeit
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 4:
     print "Usage: Cursor01.py <FeatureClass>"
     sys.exit()
 
 fc = sys.argv[1]
+
+import arcpy
+if not arcpy.Exists(fc):
+    sys.exit()
 
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
