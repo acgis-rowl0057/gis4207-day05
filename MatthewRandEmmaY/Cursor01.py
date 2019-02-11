@@ -16,10 +16,10 @@ import timeit
 scriptFolder = os.path.dirname(os.path.abspath(__file__))
 os.chdir(scriptFolder)
 
-fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
 start=timeit.default_timer()
+fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
 
-def cityProvince():
+def getCityProvince():
     rows = arcpy.SearchCursor(fc,"","", "NAME; PROV", "PROV D")
     count = 0
     currentState = ""

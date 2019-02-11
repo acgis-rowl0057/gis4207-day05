@@ -18,7 +18,8 @@ os.chdir(scriptFolder)
 
 start=timeit.default_timer()
 fc = r"..\..\..\Data\Canada\Can_Mjr_Cities.shp"
-def getDaCityProv ():
+
+def getDaCityProv():
     print "City, Prov"
     fields = ['NAME', 'PROV']
     count = 0
